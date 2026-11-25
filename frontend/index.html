@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dear Skin · tu personal shopper de skincare coreano</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23F08A75%22/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="cabecera">
+    <a class="logo" href="/">dear <em>skin</em></a>
+    <p class="lema">Tu personal shopper de skincare coreano: la rutina justa para tu piel, con lo que ya tienes.</p>
+    <button class="boton-secundario" id="boton-usuario" type="button">Crear mi perfil</button>
+  </header>
+
+  <nav class="pestanas" role="tablist" aria-label="Secciones">
+    <button role="tab" aria-selected="true" aria-controls="panel-asistente" id="tab-asistente">Asistente</button>
+    <button role="tab" aria-selected="false" aria-controls="panel-revisar" id="tab-revisar">Revisar mi rutina</button>
+    <button role="tab" aria-selected="false" aria-controls="panel-rutina" id="tab-rutina">Rutina ideal</button>
+    <button role="tab" aria-selected="false" aria-controls="panel-armario" id="tab-armario">Mi armario</button>
+    <button role="tab" aria-selected="false" aria-controls="panel-journey" id="tab-journey">Skin journey</button>
+    <button role="tab" aria-selected="false" aria-controls="panel-juntar" id="tab-juntar">¿Se pueden juntar?</button>
+    <button role="tab" aria-selected="false" aria-controls="panel-hype" id="tab-hype">¿Merece la pena?</button>
+    <button role="tab" aria-selected="false" aria-controls="panel-perfil" id="tab-perfil">Perfil</button>
+  </nav>
+
+  <main>
+    <!-- ============ ASISTENTE ============ -->
+    <section class="panel panel-asistente" id="panel-asistente" role="tabpanel" aria-labelledby="tab-asistente">
+      <div class="chat" aria-label="Conversación con Dear Skin">
+        <ol class="mensajes" id="mensajes" aria-live="polite">
+          <li class="mensaje bot">
+            <div class="burbuja">
+              <p>Hola, soy Dear Skin. Cuéntame cómo es tu piel, qué quieres conseguir y cuánto quieres gastar, y te monto <strong>tu rutina</strong> de mañana y noche con productos concretos, sobre todo coreanos, y dónde comprarlos.</p>
+              <p>Si me dices lo que ya tienes en casa, lo aprovecho y solo te digo qué te falta.</p>
+            </div>
+          </li>
+        </ol>
+        <div class="sugerencias" id="sugerencias">
+          <button type="button">Hazme una rutina con lo que tengo en mi armario</button>
+          <button type="button">No sé nada de skincare: pregúntame lo que necesites</button>
+          <button type="button">Revisa la rutina que uso ahora</button>
+          <button type="button">¿Puedo usar retinol y ácidos a la vez?</button>
+          <button type="button">Me voy una semana a la nieve, ¿cambio algo?</button>
+        </div>
+        <form class="caja-texto" id="formulario-chat">
+          <label for="entrada" class="solo-lectores">Escribe tu mensaje</label>
+          <textarea id="entrada" rows="1" placeholder="Ej.: el sérum me parece caro, ¿hay algo más barato?" required></textarea>
+          <button type="submit" class="boton-principal" id="enviar">Enviar</button>
+        </form>
+      </div>
+
+      <aside class="rutina-mini" aria-labelledby="titulo-rutina-mini">
+        <h2 id="titulo-rutina-mini">Tu rutina</h2>
+        <div id="rutina-mini"><p class="vacio">Aún no tienes rutina. Pídesela en el chat o rellena el formulario de «Mi rutina».</p></div>
+      </aside>
+    </section>
+
+    <!-- ============ REVISAR MI RUTINA ============ -->
+    <section class="panel" id="panel-revisar" role="tabpanel" aria-labelledby="tab-revisar" hidden>
+      <div class="cabecera-panel">
+        <h2>Revisar mi rutina</h2>
+        <p class="ayuda">Apunta lo que usas hoy, en orden, tal cual. Si en un paso alternas dos productos (por ejemplo retinol unas noches y ácido otras), añade el segundo con «Alternar con otro» y marca qué días va cada uno.</p>
+      </div>
+      <div class="constructor">
+        <section class="columna-rutina tarjeta" data-momento="manana">
+          <h3>Mañana</h3>
+          <ol class="pasos-constructor"></ol>
+          <div class="anadir-paso">
+            <label class="solo-lectores" for="buscar-manana">Añadir producto a la mañana</label>
+            <input class="buscador" id="buscar-manana" type="search" placeholder="＋ Añade un producto (busca o elige de tu armario)" autocomplete="off">
+            <ul class="resultados-constructor"></ul>
+          </div>
+        </section>
+        <section class="columna-rutina tarjeta" data-momento="noche">
+          <h3>Noche</h3>
+          <ol class="pasos-constructor"></ol>
+          <div class="anadir-paso">
+            <label class="solo-lectores" for="buscar-noche">Añadir producto a la noche</label>
+            <input class="buscador" id="buscar-noche" type="search" placeholder="＋ Añade un producto (busca o elige de tu armario)" autocomplete="off">
+            <ul class="resultados-constructor"></ul>
+          </div>
+        </section>
+      </div>
+      <p class="centrado"><button class="boton-principal grande" id="boton-revisar" type="button">Revisar mi rutina</button></p>
+      <div id="informe-revision"></div>
+    </section>
+
+    <!-- ============ RUTINA IDEAL ============ -->
+    <section class="panel" id="panel-rutina" role="tabpanel" aria-labelledby="tab-rutina" hidden>
+      <div class="cabecera-panel">
+        <h2>Rutina ideal</h2>
+        <details class="desplegable">
+          <summary class="boton-secundario">Generar sin chat</summary>
+          <form id="formulario-rutina" class="formulario">
+            <fieldset>
+              <legend>Zonas</legend>
+              <div class="chips">
+                <label><input type="checkbox" name="zonas" value="cara" checked><span>Cara</span></label>
+                <label><input type="checkbox" name="zonas" value="cuerpo"><span>Cuerpo</span></label>
+                <label><input type="checkbox" name="zonas" value="pelo"><span>Pelo</span></label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Objetivos, por orden de importancia</legend>
+              <div class="chips" id="chips-objetivos"></div>
+            </fieldset>
+            <div class="tres-columnas">
+              <label class="campo">Presupuesto (€)<input name="presupuesto" type="number" min="0" step="5" placeholder="sin límite"></label>
+              <label class="campo">Pasos máximos<input name="max_pasos" type="number" min="2" max="10" placeholder="los de tu perfil"></label>
+              <label class="campo">Clima o viaje
+                <select name="clima">
+                  <option value="">Normal</option>
+                  <option value="frio_seco">Frío y seco (nieve, invierno)</option>
+                  <option value="calor_humedo">Calor húmedo</option>
+                  <option value="sol_intenso">Mucho sol (playa)</option>
+                </select>
+              </label>
+            </div>
+            <p class="ayuda">Usa tu perfil (tipo de piel, sensibilidad, alergias) y lo que tienes en tu armario.</p>
+            <button class="boton-principal" type="submit">Calcular mi rutina</button>
+          </form>
+        </details>
+      </div>
+      <div id="rutina-completa"><p class="vacio">Aún no tienes rutina.</p></div>
+    </section>
+
+    <!-- ============ ARMARIO ============ -->
+    <section class="panel" id="panel-armario" role="tabpanel" aria-labelledby="tab-armario" hidden>
+      <div class="cabecera-panel">
+        <h2>Mi armario</h2>
+        <p class="ayuda">Apunta lo que ya tienes en casa. Dear Skin construye tu rutina con estos productos y solo te recomienda comprar lo que falta.</p>
+      </div>
+      <div class="dos-columnas-amplias">
+        <div>
+          <label class="campo" for="buscar-armario">Busca un producto del catálogo</label>
+          <input class="buscador" id="buscar-armario" type="search" placeholder="COSRX snail, Anua toner, CeraVe…" autocomplete="off">
+          <ul class="resultados" id="resultados-armario"></ul>
+          <details class="desplegable">
+            <summary class="enlace">¿No aparece? Añádelo a mano</summary>
+            <form id="formulario-propio" class="formulario">
+              <label class="campo">Nombre<input name="nombre" required maxlength="120" placeholder="Mi crema de la farmacia"></label>
+              <div class="dos-columnas">
+                <label class="campo">Para qué paso
+                  <select name="paso" required>
+                    <optgroup label="1 · Limpieza">
+                      <option value="limpiador_aceite">Aceite o bálsamo desmaquillante</option>
+                      <option value="limpiador_micelar">Agua micelar o leche desmaquillante</option>
+                      <option value="limpiador_gel">Gel o espuma limpiadora</option>
+                      <option value="limpiador_crema">Limpiador en crema</option>
+                    </optgroup>
+                    <optgroup label="2 · Tónico">
+                      <option value="tonico">Tónico o esencia</option>
+                    </optgroup>
+                    <optgroup label="3 · Sérums">
+                      <option value="serum_hidratante">Hidratante (hialurónico, ceramidas…)</option>
+                      <option value="serum_tratamiento">Tratamiento: granitos, poros, grasa</option>
+                      <option value="serum_antiedad">Antiedad: retinol, péptidos…</option>
+                      <option value="serum_smooth">Textura y smooth: ácidos suaves</option>
+                      <option value="serum_luminosidad">Luminosidad y manchas: vitamina C…</option>
+                      <option value="serum_calmante">Calmante: centella, rojeces</option>
+                      <option value="contorno">Contorno de ojos</option>
+                    </optgroup>
+                    <optgroup label="4 · Crema">
+                      <option value="hidratante">Crema hidratante</option>
+                    </optgroup>
+                    <optgroup label="5 · Protector solar">
+                      <option value="spf">Protector solar</option>
+                    </optgroup>
+                    <optgroup label="Cuerpo">
+                      <option value="gel_corporal">Gel de ducha</option><option value="hidratante_corporal">Hidratante corporal</option>
+                    </optgroup>
+                    <optgroup label="Pelo">
+                      <option value="champu">Champú</option><option value="acondicionador">Acondicionador</option>
+                      <option value="tratamiento_capilar">Aceite o sérum capilar</option>
+                    </optgroup>
+                  </select>
+                </label>
+                <label class="campo">Zona
+                  <select name="zona"><option value="cara">Cara</option><option value="cuerpo">Cuerpo</option><option value="pelo">Pelo</option></select>
+                </label>
+              </div>
+              <button class="boton-principal" type="submit">Añadir a mi armario</button>
+            </form>
+          </details>
+        </div>
+        <div id="lista-armario"></div>
+      </div>
+    </section>
+
+    <!-- ============ SKIN JOURNEY ============ -->
+    <section class="panel" id="panel-journey" role="tabpanel" aria-labelledby="tab-journey" hidden>
+      <div class="cabecera-panel">
+        <h2>Skin journey</h2>
+        <p class="ayuda">Un registro semanal de cómo toleras tus productos. Dear Skin lo recuerda y lo usa en las próximas recomendaciones. No diagnostica: si algo te preocupa, consulta a un dermatólogo.</p>
+      </div>
+      <div class="dos-columnas-amplias">
+        <form id="formulario-diario" class="formulario etiqueta">
+          <fieldset>
+            <legend>¿Qué productos has usado esta semana?</legend>
+            <div class="lista-casillas" id="productos-diario"><p class="vacio">Añade productos a tu armario o genera una rutina.</p></div>
+          </fieldset>
+          <fieldset>
+            <legend>¿Qué tal los has tolerado?</legend>
+            <div class="escala" id="escala-tolerancia">
+              <label><input type="radio" name="tolerancia" value="1" required><span>Fatal</span></label>
+              <label><input type="radio" name="tolerancia" value="2"><span>Mal</span></label>
+              <label><input type="radio" name="tolerancia" value="3"><span>Regular</span></label>
+              <label><input type="radio" name="tolerancia" value="4"><span>Bien</span></label>
+              <label><input type="radio" name="tolerancia" value="5"><span>Genial</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>¿Has notado algo?</legend>
+            <div class="chips">
+              <label><input type="checkbox" name="sintomas" value="rojez"><span>Rojez</span></label>
+              <label><input type="checkbox" name="sintomas" value="picor"><span>Picor</span></label>
+              <label><input type="checkbox" name="sintomas" value="granitos"><span>Granitos nuevos</span></label>
+              <label><input type="checkbox" name="sintomas" value="sequedad"><span>Sequedad</span></label>
+              <label><input type="checkbox" name="sintomas" value="tirantez"><span>Tirantez</span></label>
+              <label><input type="checkbox" name="sintomas" value="descamacion"><span>Descamación</span></label>
+              <label><input type="checkbox" name="sintomas" value="mejora"><span>Mejora visible</span></label>
+            </div>
+          </fieldset>
+          <label class="casilla"><input type="checkbox" name="reaccion"> Creo que algún producto me ha dado reacción</label>
+          <label class="campo">Notas<textarea name="notas" rows="2" maxlength="1000" placeholder="Ej.: menos granitos en la frente, algo de tirantez por la mañana"></textarea></label>
+          <label class="casilla"><input type="checkbox" name="compartir_resena"> Compartirlo también como reseña anónima para ayudar a otras personas</label>
+          <p class="estado-formulario" id="estado-diario" role="status"></p>
+          <button class="boton-principal" type="submit">Guardar esta semana</button>
+        </form>
+        <div id="resumen-journey"></div>
+      </div>
+    </section>
+
+    <!-- ============ MERECE LA PENA ============ -->
+    <section class="panel" id="panel-hype" role="tabpanel" aria-labelledby="tab-hype" hidden>
+      <div class="cabecera-panel">
+        <h2>¿Merece la pena?</h2>
+        <p class="ayuda">¿Has visto un producto viral en TikTok? Escribe su nombre y Dear Skin te dice si encaja en tu rutina o si ya tienes algo que hace lo mismo.</p>
+      </div>
+      <form id="formulario-hype" class="buscador-hype">
+        <label for="entrada-hype" class="solo-lectores">Nombre del producto</label>
+        <input class="buscador" id="entrada-hype" list="lista-productos" placeholder="medicube PDRN serum, Anua heartleaf toner…" required>
+        <datalist id="lista-productos"></datalist>
+        <button class="boton-principal" type="submit">Analizar</button>
+      </form>
+      <div id="resultado-hype"></div>
+    </section>
+
+    <!-- ============ ¿SE PUEDEN JUNTAR? ============ -->
+    <section class="panel" id="panel-juntar" role="tabpanel" aria-labelledby="tab-juntar" hidden>
+      <div class="cabecera-panel">
+        <h2>¿Se pueden juntar?</h2>
+        <p class="ayuda">Escribe productos o ingredientes (retinol, vitamina C, tu sérum de niacinamida…) y te digo si se potencian, si van mejor en noches distintas o si no conviene mezclarlos, y en qué momento del día va cada uno.</p>
+      </div>
+      <form id="formulario-juntar" class="buscador-hype">
+        <label for="entrada-juntar" class="solo-lectores">Producto o ingrediente</label>
+        <input class="buscador" id="entrada-juntar" list="lista-productos" placeholder="retinol, ácido glicólico, Anua niacinamide…">
+        <button class="boton-secundario" type="submit">Añadir</button>
+      </form>
+      <div class="chips-juntar" id="elegidos-juntar" aria-live="polite"></div>
+      <p class="atajos-juntar">
+        <button class="enlace" type="button" id="juntar-armario">Usar los sérums y tratamientos de mi armario</button>
+        <button class="enlace" type="button" data-juntar-ejemplo="retinol|ácido glicólico|niacinamida|vitamina c">Ver un ejemplo</button>
+      </p>
+      <p class="centrado"><button class="boton-principal" type="button" id="boton-juntar" disabled>Comprobar</button></p>
+      <div id="resultado-juntar"></div>
+    </section>
+
+    <!-- ============ PERFIL ============ -->
+    <section class="panel" id="panel-perfil" role="tabpanel" aria-labelledby="tab-perfil" hidden>
+      <div class="cabecera-panel">
+        <h2>Perfil</h2>
+        <p class="ayuda">Dear Skin usa estos datos en todas sus recomendaciones. Se guardan en este servidor con un identificador; no hay contraseñas.</p>
+      </div>
+      <form id="formulario-perfil" class="formulario etiqueta perfil-form">
+        <label class="campo">Tu nombre o alias<input name="alias" maxlength="40" required></label>
+        <fieldset>
+          <legend>Tipo de piel</legend>
+          <div class="chips">
+            <label><input type="radio" name="tipo_piel" value="grasa"><span>Grasa</span></label>
+            <label><input type="radio" name="tipo_piel" value="mixta"><span>Mixta</span></label>
+            <label><input type="radio" name="tipo_piel" value="seca"><span>Seca</span></label>
+            <label><input type="radio" name="tipo_piel" value="normal"><span>Normal</span></label>
+            <label><input type="radio" name="tipo_piel" value="acneica"><span>Con acné</span></label>
+            <label><input type="radio" name="tipo_piel" value="madura"><span>Madura</span></label>
+            <label><input type="radio" name="tipo_piel" value="atopica"><span>Atópica</span></label>
+          </div>
+        </fieldset>
+        <label class="casilla"><input type="checkbox" name="sensible"> Mi piel es sensible o reacciona con facilidad</label>
+        <label class="casilla"><input type="checkbox" name="embarazo"> Estoy embarazada o en lactancia</label>
+        <fieldset>
+          <legend>Qué quieres mejorar, por orden de importancia</legend>
+          <p class="ayuda">Toca en orden: el 1 es lo que más te importa.</p>
+          <div class="chips" id="perfil-objetivos"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Cómo quieres tu piel</legend>
+          <p class="ayuda">Elige las que quieras. Dear Skin las traduce a ingredientes y texturas.</p>
+          <div class="chips" id="perfil-deseos"></div>
+        </fieldset>
+        <div class="dos-columnas">
+          <label class="campo">Tipo de pelo
+            <select name="tipo_pelo">
+              <option value="">Sin especificar</option><option value="graso">Graso</option><option value="seco">Seco</option>
+              <option value="dañado">Dañado</option><option value="teñido">Teñido o decolorado</option>
+              <option value="rizado">Rizado</option><option value="fino">Fino</option><option value="caspa">Con caspa</option>
+            </select>
+          </label>
+          <label class="campo">Alergias o ingredientes que evitas
+            <input name="evitar" placeholder="perfume, lanolina…">
+          </label>
+        </div>
+        <div class="dos-columnas">
+          <label class="campo">Presupuesto habitual (€)<input name="presupuesto" type="number" min="0" step="5" placeholder="sin límite"></label>
+          <label class="campo">Pasos máximos por rutina (hasta 10)<input name="max_pasos" type="number" min="2" max="10" placeholder="4"></label>
+        </div>
+        <label class="casilla"><input type="checkbox" name="kbeauty" checked> Prefiero cosmética coreana cuando encaje</label>
+        <p class="estado-formulario" id="estado-perfil" role="status"></p>
+        <button class="boton-principal" type="submit">Guardar perfil</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>Dear Skin orienta, no diagnostica. Precios orientativos; los enlaces abren la búsqueda en cada tienda. Ingredientes: <a href="https://github.com/bsyilmaz/skincare-ingredients-dataset">skincare-ingredients-dataset</a> (MIT). Catálogo ampliable con <a href="https://kbeautyanswers.com/dataset/">K-Beauty Answers</a> (CC BY 4.0) y <a href="https://world.openbeautyfacts.org">Open Beauty Facts</a> (ODbL).</p>
+  </footer>
+
+  <!-- Diálogo: reseñas de un producto -->
+  <dialog id="dialogo-resenas" class="dialogo">
+    <div class="dialogo-cabecera">
+      <h2 id="titulo-resenas">Reseñas</h2>
+      <button type="button" class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+    </div>
+    <div id="contenido-resenas"></div>
+  </dialog>
+
+  <!-- Diálogo: escribir una reseña -->
+  <dialog id="dialogo-nueva" class="dialogo">
+    <div class="dialogo-cabecera">
+      <h2>Escribir una reseña</h2>
+      <button type="button" class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+    </div>
+    <form id="formulario-resena" class="formulario">
+      <label class="campo">Producto
+        <input name="producto_nombre" id="nombre-producto-resena" readonly>
+        <input type="hidden" name="producto_id" id="id-producto-resena">
+      </label>
+      <div class="dos-columnas">
+        <label class="campo">Tu tipo de piel o pelo
+          <select name="tipo_piel" required>
+            <option value="grasa">Grasa</option><option value="mixta">Mixta</option><option value="seca">Seca</option>
+            <option value="normal">Normal</option><option value="sensible">Sensible</option><option value="acneica">Con acné</option>
+            <option value="madura">Madura</option><option value="graso">Pelo graso</option><option value="seco">Pelo seco</option>
+            <option value="teñido">Pelo teñido</option><option value="rizado">Pelo rizado</option>
+          </select>
+        </label>
+        <label class="campo">Semanas usándolo<input name="semanas_uso" type="number" min="0" max="520" value="4" required></label>
+      </div>
+      <fieldset>
+        <legend>Puntuación</legend>
+        <div class="estrellas">
+          <input type="radio" name="puntuacion" value="5" id="e5" required><label for="e5" title="5 de 5">★</label>
+          <input type="radio" name="puntuacion" value="4" id="e4"><label for="e4" title="4 de 5">★</label>
+          <input type="radio" name="puntuacion" value="3" id="e3"><label for="e3" title="3 de 5">★</label>
+          <input type="radio" name="puntuacion" value="2" id="e2"><label for="e2" title="2 de 5">★</label>
+          <input type="radio" name="puntuacion" value="1" id="e1"><label for="e1" title="1 de 5">★</label>
+        </div>
+      </fieldset>
+      <label class="casilla"><input type="checkbox" name="reaccion"> Me dio reacción (rojez, picor, granitos…)</label>
+      <label class="campo">Tu experiencia<textarea name="texto" rows="3" maxlength="1000" placeholder="¿Notaste cambios? ¿Cuánto tardaron?"></textarea></label>
+      <label class="campo">Alias (opcional)<input name="alias" type="text" maxlength="40" placeholder="anónimo"></label>
+      <p class="estado-formulario" id="estado-resena" role="status"></p>
+      <button type="submit" class="boton-principal">Publicar reseña</button>
+    </form>
+  </dialog>
+
+  <!-- Diálogo: crear perfil rápido -->
+  <dialog id="dialogo-bienvenida" class="dialogo">
+    <div class="dialogo-cabecera">
+      <h2>Crea tu perfil</h2>
+      <button type="button" class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+    </div>
+    <p>Así Dear Skin recuerda tu piel, tu armario y cómo toleras cada producto.</p>
+    <form id="formulario-bienvenida" class="formulario">
+      <label class="campo">Tu nombre o alias<input name="alias" maxlength="40" required></label>
+      <fieldset>
+        <legend>Tipo de piel</legend>
+        <div class="chips">
+          <label><input type="radio" name="tipo_piel" value="grasa" required><span>Grasa</span></label>
+          <label><input type="radio" name="tipo_piel" value="mixta"><span>Mixta</span></label>
+          <label><input type="radio" name="tipo_piel" value="seca"><span>Seca</span></label>
+          <label><input type="radio" name="tipo_piel" value="normal"><span>Normal</span></label>
+          <label><input type="radio" name="tipo_piel" value="acneica"><span>Con acné</span></label>
+        </div>
+      </fieldset>
+      <label class="casilla"><input type="checkbox" name="sensible"> Mi piel es sensible</label>
+      <button class="boton-principal" type="submit">Crear perfil</button>
+      <button class="enlace" type="button" data-cerrar>Seguir sin perfil</button>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
