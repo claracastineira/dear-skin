@@ -1,0 +1,11 @@
+{
+  "descripcion": "Plantillas de enlace de búsqueda por tienda. {q} se sustituye por 'marca nombre'. Si una tienda cambia su web, basta con editar aquí.",
+  "tiendas": {
+    "oliveyoung": {"nombre": "Olive Young Global", "tipo": "K-beauty (envío desde Corea)", "url": "https://global.oliveyoung.com/display/search?query={q}"},
+    "miin":       {"nombre": "Miin Cosmetics", "tipo": "K-beauty en España", "url": "https://miin-cosmetics.com/es/busqueda?controller=search&s={q}"},
+    "primor":     {"nombre": "Primor", "tipo": "Perfumería", "url": "https://www.primor.eu/es_es/catalogsearch/result/?q={q}"},
+    "sephora":    {"nombre": "Sephora", "tipo": "Perfumería", "url": "https://www.sephora.es/buscar?q={q}"},
+    "farmacia":   {"nombre": "DosFarma", "tipo": "Farmacia online", "url": "https://www.dosfarma.com/catalogsearch/result/?q={q}"},
+    "amazon":     {"nombre": "Amazon", "tipo": "Marketplace", "url": "https://www.amazon.es/s?k={q}"}
+  }
+}

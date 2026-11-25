@@ -1,0 +1,1162 @@
+{
+  "version": "1.0",
+  "descripcion": "Matriz de compatibilidad de activos de Dear Skin. Por familias de ingredientes: momento del día, irritación, tipos de piel y relaciones entre familias (se potencian, mejor separados, uno de día y otro de noche, misma función, no juntar). La consultan el optimizador de rutinas, la revisión de rutina y el chat antes de recomendar.",
+  "fuentes": [
+    "bsyilmaz/skincare-ingredients-dataset (MIT): compatibility_rules.json e ingredients.json (pairs_well_with, avoid_with, time_of_use, skin_types)",
+    "Skinzy, tabla de compatibilidad de 25 activos (useskinzy.app/compatibility-chart): categorías 'no en la misma sesión', 'misma clase', 'combinación verificada' y 'uno de día y otro de noche'",
+    "Consenso dermatológico habitual sobre retinoides, exfoliantes, vitamina C y fotoprotección (redactado por Dear Skin)"
+  ],
+  "aviso": "Orientativo, no es consejo médico. Una pareja sin regla no significa que sea segura al 100 %: introduce los activos de uno en uno.",
+  "tipos": {
+    "sinergia": "Se potencian",
+    "imprescindible": "Imprescindible juntos",
+    "am_pm": "Uno de día y otro de noche",
+    "no_misma_sesion": "Mejor en noches distintas",
+    "precaucion": "Con cuidado",
+    "misma_clase": "Hacen lo mismo: elige uno",
+    "evitar": "No los juntes"
+  },
+  "familias": {
+    "retinoides": {
+      "nombre": "Retinoides (retinol, retinal, adapaleno…)",
+      "ids": [
+        "retinol",
+        "retinaldehyde",
+        "retinyl-retinoate",
+        "retinyl-palmitate",
+        "adapalene"
+      ],
+      "momento": "noche",
+      "irritacion": "alta",
+      "ideal": [
+        "normal",
+        "grasa",
+        "mixta",
+        "acneica",
+        "madura"
+      ],
+      "cuidado": [
+        "sensible",
+        "atopica",
+        "seca"
+      ],
+      "objetivos": [
+        "antiedad",
+        "textura",
+        "acne",
+        "manchas",
+        "poros"
+      ],
+      "nota": "Aceleran la renovación celular. Se degradan con la luz y sensibilizan al sol: siempre de noche y con protector solar al día siguiente. Empieza 2-3 noches por semana.",
+      "activo": true
+    },
+    "bakuchiol": {
+      "nombre": "Bakuchiol",
+      "ids": [
+        "bakuchiol"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "sensible",
+        "seca",
+        "normal",
+        "madura",
+        "atopica"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "antiedad",
+        "textura"
+      ],
+      "nota": "Alternativa vegetal y suave al retinol; apta para pieles que no toleran retinoides.",
+      "activo": true
+    },
+    "aha": {
+      "nombre": "Ácidos AHA (glicólico, láctico, mandélico)",
+      "ids": [
+        "glycolic-acid",
+        "lactic-acid",
+        "mandelic-acid"
+      ],
+      "momento": "noche",
+      "irritacion": "media",
+      "ideal": [
+        "normal",
+        "grasa",
+        "mixta",
+        "madura"
+      ],
+      "cuidado": [
+        "sensible",
+        "atopica"
+      ],
+      "objetivos": [
+        "textura",
+        "luminosidad",
+        "manchas"
+      ],
+      "nota": "Exfolian la superficie y dan luz. Fotosensibilizan: de noche y con protector solar. El láctico y el mandélico son los más suaves.",
+      "activo": true
+    },
+    "bha": {
+      "nombre": "Ácido salicílico (BHA)",
+      "ids": [
+        "salicylic-acid"
+      ],
+      "momento": "ambos",
+      "irritacion": "media",
+      "ideal": [
+        "grasa",
+        "mixta",
+        "acneica"
+      ],
+      "cuidado": [
+        "seca",
+        "sensible",
+        "atopica"
+      ],
+      "objetivos": [
+        "acne",
+        "poros",
+        "grasa",
+        "textura"
+      ],
+      "nota": "Entra en el poro porque es soluble en grasa: puntos negros, granitos y poros. En limpiador se aclara y casi no irrita.",
+      "activo": true
+    },
+    "pha": {
+      "nombre": "Ácidos PHA (gluconolactona)",
+      "ids": [
+        "gluconolactone",
+        "lactobionic-acid"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "sensible",
+        "seca",
+        "atopica",
+        "normal"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "textura",
+        "hidratacion"
+      ],
+      "nota": "Exfoliante muy suave que además hidrata; la opción para pieles reactivas.",
+      "activo": true
+    },
+    "peroxido_benzoilo": {
+      "nombre": "Peróxido de benzoilo",
+      "ids": [
+        "benzoyl-peroxide"
+      ],
+      "momento": "ambos",
+      "irritacion": "alta",
+      "ideal": [
+        "acneica",
+        "grasa"
+      ],
+      "cuidado": [
+        "seca",
+        "sensible",
+        "atopica"
+      ],
+      "objetivos": [
+        "acne"
+      ],
+      "nota": "Elimina la bacteria del acné. Reseca y decolora la ropa y las toallas; mejor en limpiador o en toques.",
+      "activo": true
+    },
+    "vitamina_c_pura": {
+      "nombre": "Vitamina C pura (ácido ascórbico)",
+      "ids": [
+        "ascorbic-acid"
+      ],
+      "momento": "manana",
+      "irritacion": "media",
+      "ideal": [
+        "normal",
+        "grasa",
+        "mixta",
+        "madura"
+      ],
+      "cuidado": [
+        "sensible",
+        "atopica"
+      ],
+      "objetivos": [
+        "luminosidad",
+        "manchas",
+        "antiedad"
+      ],
+      "nota": "Antioxidante que da luz y ayuda con manchas. Por la mañana, debajo del protector solar, que la potencia. Se oxida: si amarillea, ya no sirve.",
+      "activo": true
+    },
+    "vitamina_c_derivado": {
+      "nombre": "Derivados de vitamina C",
+      "ids": [
+        "tetrahexyldecyl-ascorbate",
+        "sodium-ascorbyl-phosphate",
+        "magnesium-ascorbyl-phosphate",
+        "ascorbyl-glucoside",
+        "ethyl-ascorbic-acid"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "sensible",
+        "seca",
+        "normal",
+        "mixta",
+        "grasa",
+        "madura"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "luminosidad",
+        "manchas"
+      ],
+      "nota": "Versiones estables y suaves de la vitamina C: menos potentes pero aptas para casi todas las pieles.",
+      "activo": true
+    },
+    "niacinamida": {
+      "nombre": "Niacinamida (vitamina B3)",
+      "ids": [
+        "niacinamide",
+        "niacinamide-zinc"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "grasa",
+        "mixta",
+        "acneica",
+        "normal",
+        "seca",
+        "madura",
+        "sensible"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "grasa",
+        "poros",
+        "manchas",
+        "barrera",
+        "rojeces"
+      ],
+      "nota": "Comodín: regula la grasa, afina poros, unifica el tono y refuerza la barrera. En piel seca funciona bien si después pones hialurónico y ceramidas. Por encima del 10 % puede enrojecer.",
+      "activo": true
+    },
+    "azelaico": {
+      "nombre": "Ácido azelaico",
+      "ids": [
+        "azelaic-acid"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "sensible",
+        "acneica",
+        "mixta",
+        "grasa",
+        "normal"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "rojeces",
+        "acne",
+        "manchas"
+      ],
+      "nota": "Muy bien tolerado: rojeces, granitos y marcas. Apto en embarazo.",
+      "activo": true
+    },
+    "arbutina": {
+      "nombre": "Alfa-arbutina",
+      "ids": [
+        "alpha-arbutin"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "sensible",
+        "seca",
+        "normal",
+        "mixta",
+        "grasa",
+        "madura"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "manchas"
+      ],
+      "nota": "Frena la producción de melanina de forma suave: manchas y marcas.",
+      "activo": true
+    },
+    "tranexamico": {
+      "nombre": "Ácido tranexámico",
+      "ids": [
+        "tranexamic-acid"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "sensible",
+        "seca",
+        "normal",
+        "mixta",
+        "grasa",
+        "madura"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "manchas",
+        "rojeces"
+      ],
+      "nota": "Para manchas difíciles (melasma) y marcas rojizas; muy bien tolerado.",
+      "activo": true
+    },
+    "kojico": {
+      "nombre": "Ácido kójico",
+      "ids": [
+        "kojic-acid"
+      ],
+      "momento": "ambos",
+      "irritacion": "media",
+      "ideal": [
+        "normal",
+        "mixta",
+        "grasa"
+      ],
+      "cuidado": [
+        "sensible",
+        "atopica"
+      ],
+      "objetivos": [
+        "manchas"
+      ],
+      "nota": "Despigmentante eficaz pero algo irritante.",
+      "activo": true
+    },
+    "hidroquinona": {
+      "nombre": "Hidroquinona",
+      "ids": [
+        "hydroquinone"
+      ],
+      "momento": "noche",
+      "irritacion": "alta",
+      "ideal": [],
+      "cuidado": [
+        "sensible",
+        "atopica",
+        "seca"
+      ],
+      "objetivos": [
+        "manchas"
+      ],
+      "nota": "Despigmentante de uso médico: solo con indicación del dermatólogo.",
+      "activo": true
+    },
+    "hidratantes": {
+      "nombre": "Hidratantes (hialurónico, pantenol, betaglucano…)",
+      "ids": [
+        "hyaluronic-acid",
+        "sodium-hyaluronate",
+        "panthenol",
+        "beta-glucan",
+        "polyglutamic-acid",
+        "ectoin",
+        "trehalose",
+        "sodium-pca",
+        "urea"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "seca",
+        "sensible",
+        "atopica",
+        "normal",
+        "mixta",
+        "grasa",
+        "acneica",
+        "madura"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "hidratacion",
+        "barrera"
+      ],
+      "nota": "Atraen agua a la piel. Compensan cualquier activo que reseque; aplícalos sobre la piel aún húmeda y sella con crema."
+    },
+    "ceramidas": {
+      "nombre": "Ceramidas y lípidos de la barrera",
+      "ids": [
+        "ceramide-np",
+        "cholesterol",
+        "phytosphingosine",
+        "squalane"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "seca",
+        "sensible",
+        "atopica",
+        "madura",
+        "normal",
+        "mixta"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "barrera",
+        "hidratacion"
+      ],
+      "nota": "Son el 'cemento' de la barrera: evitan que el agua se escape. Clave con retinoides y ácidos."
+    },
+    "calmantes": {
+      "nombre": "Calmantes (centella, madecasósido, avena, alantoína…)",
+      "ids": [
+        "centella-asiatica",
+        "madecassoside",
+        "allantoin",
+        "bisabolol",
+        "colloidal-oatmeal",
+        "glycyrrhetinic-acid",
+        "guaiazulene",
+        "mugwort-extract",
+        "houttuynia-cordata",
+        "aloe-vera",
+        "chamomile-extract",
+        "calendula-extract",
+        "licorice-root-extract"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "sensible",
+        "atopica",
+        "acneica",
+        "seca",
+        "normal",
+        "mixta",
+        "grasa"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "calmar",
+        "rojeces",
+        "barrera"
+      ],
+      "nota": "Bajan la rojez y la irritación; la base de muchos sérums coreanos."
+    },
+    "regeneradores": {
+      "nombre": "Regeneradores coreanos (baba de caracol, PDRN, propóleo, fermentos)",
+      "ids": [
+        "snail-mucin",
+        "pdrn",
+        "propolis-extract",
+        "galactomyces-ferment",
+        "lactic-acid-bacteria-ferment",
+        "soybean-ferment",
+        "ginseng-extract",
+        "rice-extract"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "seca",
+        "sensible",
+        "normal",
+        "mixta",
+        "madura",
+        "acneica"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "reparar",
+        "hidratacion",
+        "luminosidad",
+        "barrera"
+      ],
+      "nota": "Reparan, hidratan y dan jugosidad (el efecto glowy). Se combinan bien con casi todo."
+    },
+    "peptidos": {
+      "nombre": "Péptidos",
+      "ids": [
+        "matrixyl",
+        "argireline",
+        "peptide-complex-tripeptide-1",
+        "palmitoyl-tetrapeptide-7"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "madura",
+        "seca",
+        "sensible",
+        "normal"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "antiedad"
+      ],
+      "nota": "Mensajeros que ayudan a la firmeza; suaves y combinables.",
+      "activo": true
+    },
+    "peptidos_cobre": {
+      "nombre": "Péptidos de cobre (GHK-Cu)",
+      "ids": [
+        "copper-tripeptide-1"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "madura",
+        "normal",
+        "seca"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "antiedad",
+        "reparar"
+      ],
+      "nota": "Reparan y estimulan colágeno, pero el cobre reacciona con ácidos y vitamina C pura.",
+      "activo": true
+    },
+    "zinc": {
+      "nombre": "Zinc (PCA)",
+      "ids": [
+        "zinc-pca",
+        "niacinamide-zinc"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "grasa",
+        "mixta",
+        "acneica"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "grasa",
+        "acne"
+      ],
+      "nota": "Regula el sebo y calma los granitos.",
+      "activo": true
+    },
+    "arbol_te": {
+      "nombre": "Aceite de árbol de té",
+      "ids": [
+        "tea-tree-oil"
+      ],
+      "momento": "ambos",
+      "irritacion": "media",
+      "ideal": [
+        "grasa",
+        "acneica"
+      ],
+      "cuidado": [
+        "sensible",
+        "atopica",
+        "seca"
+      ],
+      "objetivos": [
+        "acne"
+      ],
+      "nota": "Antibacteriano natural para granitos; puede irritar si está muy concentrado.",
+      "activo": true
+    },
+    "azufre": {
+      "nombre": "Azufre",
+      "ids": [
+        "sulfur"
+      ],
+      "momento": "noche",
+      "irritacion": "media",
+      "ideal": [
+        "grasa",
+        "acneica"
+      ],
+      "cuidado": [
+        "seca",
+        "sensible"
+      ],
+      "objetivos": [
+        "acne"
+      ],
+      "nota": "Seca los granitos; mejor en toques o mascarilla.",
+      "activo": true
+    },
+    "antioxidantes": {
+      "nombre": "Antioxidantes (ácido ferúlico, vitamina E, resveratrol, té verde…)",
+      "ids": [
+        "ferulic-acid",
+        "tocopherol",
+        "tocopheryl-acetate",
+        "resveratrol",
+        "coenzyme-q10",
+        "astaxanthin",
+        "green-tea-extract",
+        "glutathione"
+      ],
+      "momento": "ambos",
+      "irritacion": "baja",
+      "ideal": [
+        "normal",
+        "seca",
+        "mixta",
+        "grasa",
+        "madura",
+        "sensible"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "antiedad",
+        "luminosidad"
+      ],
+      "nota": "Protegen del daño de la contaminación y el sol; brillan sobre todo por la mañana."
+    },
+    "spf": {
+      "nombre": "Protector solar",
+      "ids": [
+        "uv-filters",
+        "zinc-oxide",
+        "titanium-dioxide",
+        "avobenzone",
+        "tinosorb-s",
+        "tinosorb-m",
+        "octocrylene",
+        "octinoxate",
+        "octisalate",
+        "homosalate",
+        "uvinul-a-plus"
+      ],
+      "momento": "manana",
+      "irritacion": "baja",
+      "ideal": [
+        "seca",
+        "sensible",
+        "atopica",
+        "normal",
+        "mixta",
+        "grasa",
+        "acneica",
+        "madura"
+      ],
+      "cuidado": [],
+      "objetivos": [
+        "manchas",
+        "antiedad"
+      ],
+      "nota": "El mejor antiedad y antimanchas que existe. Último paso de la mañana, todos los días."
+    }
+  },
+  "relaciones": [
+    {
+      "a": "retinoides",
+      "b": "aha",
+      "tipo": "no_misma_sesion",
+      "porque": "Los dos aceleran la renovación de la piel: juntos la sobreexfolian y la irritan.",
+      "como": "Noches distintas: por ejemplo ácido lunes y jueves, retinoide martes y viernes, y noches de descanso."
+    },
+    {
+      "a": "retinoides",
+      "b": "bha",
+      "tipo": "no_misma_sesion",
+      "porque": "Juntos pueden saturar la barrera, sobre todo al empezar.",
+      "como": "Noches alternas, o el salicílico por la mañana (o en el limpiador) y el retinoide por la noche."
+    },
+    {
+      "a": "retinoides",
+      "b": "pha",
+      "tipo": "precaucion",
+      "porque": "El PHA es suave, pero sigue siendo un exfoliante más.",
+      "como": "Mejor en noches distintas mientras tu piel se acostumbra al retinoide."
+    },
+    {
+      "a": "retinoides",
+      "b": "peroxido_benzoilo",
+      "tipo": "no_misma_sesion",
+      "porque": "El peróxido puede degradar el retinol y juntos resecan mucho.",
+      "como": "Peróxido por la mañana y retinoide por la noche (salvo productos formulados juntos, como adapaleno con peróxido)."
+    },
+    {
+      "a": "retinoides",
+      "b": "vitamina_c_pura",
+      "tipo": "am_pm",
+      "porque": "Funcionan a pH distintos y juntos irritan, pero se complementan muy bien.",
+      "como": "Vitamina C por la mañana y retinoide por la noche."
+    },
+    {
+      "a": "retinoides",
+      "b": "retinoides",
+      "tipo": "misma_clase",
+      "porque": "Dos retinoides hacen lo mismo y suman irritación.",
+      "como": "Quédate con uno."
+    },
+    {
+      "a": "retinoides",
+      "b": "bakuchiol",
+      "tipo": "misma_clase",
+      "porque": "El bakuchiol es la alternativa suave al retinol: hacen un trabajo parecido.",
+      "como": "Uno u otro; si quieres los dos, en noches distintas."
+    },
+    {
+      "a": "retinoides",
+      "b": "azufre",
+      "tipo": "precaucion",
+      "porque": "Los dos resecan.",
+      "como": "En noches distintas o el azufre solo en toques."
+    },
+    {
+      "a": "retinoides",
+      "b": "peptidos_cobre",
+      "tipo": "precaucion",
+      "porque": "Pueden reducirse la eficacia el uno al otro y sumar sensibilidad.",
+      "como": "Mejor en noches distintas."
+    },
+    {
+      "a": "retinoides",
+      "b": "niacinamida",
+      "tipo": "sinergia",
+      "porque": "La niacinamida refuerza la barrera y reduce la irritación del retinoide.",
+      "como": "Se pueden usar la misma noche: primero el retinoide y después la niacinamida, o un producto que lleve los dos."
+    },
+    {
+      "a": "retinoides",
+      "b": "hidratantes",
+      "tipo": "sinergia",
+      "porque": "El hialurónico y el pantenol compensan la sequedad del retinoide.",
+      "como": "Retinoide y, encima, el sérum hidratante y la crema."
+    },
+    {
+      "a": "retinoides",
+      "b": "ceramidas",
+      "tipo": "sinergia",
+      "porque": "Las ceramidas reparan la barrera mientras el retinoide trabaja.",
+      "como": "Crema con ceramidas encima del retinoide (o el método sándwich: crema, retinoide, crema)."
+    },
+    {
+      "a": "retinoides",
+      "b": "calmantes",
+      "tipo": "sinergia",
+      "porque": "La centella y compañía bajan la rojez del retinoide.",
+      "como": "Sérum calmante encima del retinoide."
+    },
+    {
+      "a": "retinoides",
+      "b": "regeneradores",
+      "tipo": "sinergia",
+      "porque": "Reparan y dan jugosidad a la piel que el retinoide renueva.",
+      "como": "Encima del retinoide, antes de la crema."
+    },
+    {
+      "a": "retinoides",
+      "b": "peptidos",
+      "tipo": "sinergia",
+      "porque": "Atacan las arrugas por dos caminos distintos.",
+      "como": "Se pueden usar la misma noche."
+    },
+    {
+      "a": "retinoides",
+      "b": "azelaico",
+      "tipo": "sinergia",
+      "porque": "Juntos trabajan granitos, manchas y textura; el azelaico es suave.",
+      "como": "Azelaico por la mañana y retinoide por la noche, o la misma noche si tu piel lo tolera."
+    },
+    {
+      "a": "retinoides",
+      "b": "spf",
+      "tipo": "imprescindible",
+      "porque": "El retinoide hace la piel más sensible al sol.",
+      "como": "Protector solar todas las mañanas, aunque esté nublado."
+    },
+    {
+      "a": "aha",
+      "b": "bha",
+      "tipo": "precaucion",
+      "porque": "Son dos exfoliantes: juntos pueden pasarse.",
+      "como": "Solo si tu piel lo tolera y sin otros activos esa noche; mejor en días distintos."
+    },
+    {
+      "a": "aha",
+      "b": "aha",
+      "tipo": "misma_clase",
+      "porque": "Dos AHA hacen lo mismo.",
+      "como": "Usa uno por sesión."
+    },
+    {
+      "a": "aha",
+      "b": "peroxido_benzoilo",
+      "tipo": "no_misma_sesion",
+      "porque": "Juntos irritan y resecan mucho.",
+      "como": "En momentos distintos del día o en días alternos."
+    },
+    {
+      "a": "aha",
+      "b": "vitamina_c_pura",
+      "tipo": "no_misma_sesion",
+      "porque": "Los dos son ácidos: sumados irritan.",
+      "como": "Vitamina C por la mañana y el ácido por la noche."
+    },
+    {
+      "a": "aha",
+      "b": "peptidos_cobre",
+      "tipo": "no_misma_sesion",
+      "porque": "El pH ácido desestabiliza los péptidos de cobre.",
+      "como": "En noches distintas."
+    },
+    {
+      "a": "aha",
+      "b": "bakuchiol",
+      "tipo": "precaucion",
+      "porque": "Suman exfoliación y sensibilidad.",
+      "como": "Mejor en noches distintas."
+    },
+    {
+      "a": "aha",
+      "b": "hidratantes",
+      "tipo": "sinergia",
+      "porque": "El hidratante compensa la tirantez del ácido.",
+      "como": "Después del ácido, sérum hidratante y crema."
+    },
+    {
+      "a": "aha",
+      "b": "ceramidas",
+      "tipo": "sinergia",
+      "porque": "Reparan la barrera después de exfoliar.",
+      "como": "Crema con ceramidas encima."
+    },
+    {
+      "a": "aha",
+      "b": "calmantes",
+      "tipo": "sinergia",
+      "porque": "Bajan la rojez después del ácido.",
+      "como": "Sérum calmante encima del ácido."
+    },
+    {
+      "a": "aha",
+      "b": "spf",
+      "tipo": "imprescindible",
+      "porque": "Los AHA aumentan la sensibilidad al sol hasta una semana.",
+      "como": "Protector solar todas las mañanas."
+    },
+    {
+      "a": "bha",
+      "b": "peroxido_benzoilo",
+      "tipo": "precaucion",
+      "porque": "Los dos van al grano pero resecan.",
+      "como": "Uno en el limpiador y otro en toques, o en momentos distintos."
+    },
+    {
+      "a": "bha",
+      "b": "bakuchiol",
+      "tipo": "precaucion",
+      "porque": "Suman sensibilidad.",
+      "como": "Mejor en momentos distintos."
+    },
+    {
+      "a": "bha",
+      "b": "peptidos_cobre",
+      "tipo": "no_misma_sesion",
+      "porque": "El ácido desestabiliza el cobre.",
+      "como": "En momentos distintos."
+    },
+    {
+      "a": "bha",
+      "b": "niacinamida",
+      "tipo": "sinergia",
+      "porque": "Pareja estrella para poros y grasa: el salicílico limpia el poro y la niacinamida regula el sebo.",
+      "como": "Primero el salicílico y después la niacinamida."
+    },
+    {
+      "a": "bha",
+      "b": "zinc",
+      "tipo": "sinergia",
+      "porque": "Los dos controlan el sebo y los granitos.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "bha",
+      "b": "hidratantes",
+      "tipo": "sinergia",
+      "porque": "Compensa la sequedad del salicílico.",
+      "como": "Hidratante encima."
+    },
+    {
+      "a": "bha",
+      "b": "calmantes",
+      "tipo": "sinergia",
+      "porque": "La centella calma los granitos inflamados mientras el salicílico los limpia.",
+      "como": "Calmante encima."
+    },
+    {
+      "a": "peroxido_benzoilo",
+      "b": "vitamina_c_pura",
+      "tipo": "evitar",
+      "porque": "El peróxido oxida la vitamina C y la inactiva.",
+      "como": "Vitamina C por la mañana; peróxido por la noche o en el limpiador."
+    },
+    {
+      "a": "peroxido_benzoilo",
+      "b": "hidroquinona",
+      "tipo": "evitar",
+      "porque": "Juntos pueden manchar la piel temporalmente.",
+      "como": "Nunca a la vez."
+    },
+    {
+      "a": "peroxido_benzoilo",
+      "b": "niacinamida",
+      "tipo": "sinergia",
+      "porque": "La niacinamida calma y compensa la sequedad del peróxido.",
+      "como": "Se pueden usar el mismo día."
+    },
+    {
+      "a": "peroxido_benzoilo",
+      "b": "hidratantes",
+      "tipo": "sinergia",
+      "porque": "Compensa la sequedad.",
+      "como": "Hidratante encima."
+    },
+    {
+      "a": "vitamina_c_pura",
+      "b": "vitamina_c_derivado",
+      "tipo": "misma_clase",
+      "porque": "Las dos son vitamina C.",
+      "como": "Con una basta."
+    },
+    {
+      "a": "vitamina_c_pura",
+      "b": "vitamina_c_pura",
+      "tipo": "misma_clase",
+      "porque": "Dos vitaminas C hacen lo mismo.",
+      "como": "Con una basta."
+    },
+    {
+      "a": "vitamina_c_pura",
+      "b": "kojico",
+      "tipo": "no_misma_sesion",
+      "porque": "Juntos irritan.",
+      "como": "En momentos distintos del día."
+    },
+    {
+      "a": "vitamina_c_pura",
+      "b": "peptidos_cobre",
+      "tipo": "evitar",
+      "porque": "El cobre oxida la vitamina C y se anulan.",
+      "como": "Vitamina C por la mañana, péptidos de cobre por la noche."
+    },
+    {
+      "a": "vitamina_c_pura",
+      "b": "antioxidantes",
+      "tipo": "sinergia",
+      "porque": "El ácido ferúlico y la vitamina E estabilizan la vitamina C y multiplican su protección.",
+      "como": "Juntos por la mañana (muchos sérums ya los combinan)."
+    },
+    {
+      "a": "vitamina_c_pura",
+      "b": "niacinamida",
+      "tipo": "sinergia",
+      "porque": "Es un mito que se anulen: juntas dan luz y unifican el tono.",
+      "como": "Se pueden usar en la misma rutina."
+    },
+    {
+      "a": "vitamina_c_pura",
+      "b": "hidratantes",
+      "tipo": "sinergia",
+      "porque": "El hialurónico suaviza la vitamina C.",
+      "como": "Hidratante encima."
+    },
+    {
+      "a": "vitamina_c_pura",
+      "b": "spf",
+      "tipo": "sinergia",
+      "porque": "La vitamina C refuerza al protector solar frente al daño del sol.",
+      "como": "Vitamina C y, encima, el protector."
+    },
+    {
+      "a": "vitamina_c_derivado",
+      "b": "niacinamida",
+      "tipo": "sinergia",
+      "porque": "Luz y tono uniforme sin irritar.",
+      "como": "Se pueden usar juntas."
+    },
+    {
+      "a": "vitamina_c_derivado",
+      "b": "spf",
+      "tipo": "sinergia",
+      "porque": "Refuerza la protección antioxidante.",
+      "como": "Por la mañana, debajo del protector."
+    },
+    {
+      "a": "vitamina_c_derivado",
+      "b": "arbutina",
+      "tipo": "sinergia",
+      "porque": "Atacan las manchas por dos caminos.",
+      "como": "Se pueden usar juntas."
+    },
+    {
+      "a": "niacinamida",
+      "b": "azelaico",
+      "tipo": "sinergia",
+      "porque": "Rojeces, granitos y manchas: se complementan y los dos son suaves.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "niacinamida",
+      "b": "arbutina",
+      "tipo": "sinergia",
+      "porque": "Pareja clásica antimanchas.",
+      "como": "Se pueden usar juntas."
+    },
+    {
+      "a": "niacinamida",
+      "b": "tranexamico",
+      "tipo": "sinergia",
+      "porque": "Juntos aclaran manchas y marcas con muy poca irritación.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "niacinamida",
+      "b": "hidratantes",
+      "tipo": "sinergia",
+      "porque": "En piel seca, la niacinamida brilla si después hay hialurónico y crema.",
+      "como": "Niacinamida y, encima, el hidratante."
+    },
+    {
+      "a": "niacinamida",
+      "b": "ceramidas",
+      "tipo": "sinergia",
+      "porque": "La niacinamida ayuda a la piel a fabricar sus propias ceramidas.",
+      "como": "Se pueden usar juntas."
+    },
+    {
+      "a": "niacinamida",
+      "b": "zinc",
+      "tipo": "sinergia",
+      "porque": "Control del sebo y de los granitos.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "niacinamida",
+      "b": "regeneradores",
+      "tipo": "sinergia",
+      "porque": "Barrera fuerte y piel jugosa.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "azelaico",
+      "b": "hidratantes",
+      "tipo": "sinergia",
+      "porque": "Compensa la ligera tirantez del azelaico.",
+      "como": "Hidratante encima."
+    },
+    {
+      "a": "arbutina",
+      "b": "tranexamico",
+      "tipo": "sinergia",
+      "porque": "Dos despigmentantes suaves que se suman.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "arbutina",
+      "b": "spf",
+      "tipo": "imprescindible",
+      "porque": "Sin protector solar, cualquier tratamiento de manchas pierde la batalla.",
+      "como": "Protector todas las mañanas."
+    },
+    {
+      "a": "tranexamico",
+      "b": "spf",
+      "tipo": "imprescindible",
+      "porque": "Sin protector solar las manchas vuelven.",
+      "como": "Protector todas las mañanas."
+    },
+    {
+      "a": "kojico",
+      "b": "spf",
+      "tipo": "imprescindible",
+      "porque": "Sin protector solar las manchas vuelven.",
+      "como": "Protector todas las mañanas."
+    },
+    {
+      "a": "hidroquinona",
+      "b": "spf",
+      "tipo": "imprescindible",
+      "porque": "Sin protector solar empeora las manchas.",
+      "como": "Protector todas las mañanas."
+    },
+    {
+      "a": "hidratantes",
+      "b": "ceramidas",
+      "tipo": "sinergia",
+      "porque": "Uno mete agua y otro la sella: hidratación que dura.",
+      "como": "Primero el hidratante (sérum) y luego la crema con ceramidas."
+    },
+    {
+      "a": "hidratantes",
+      "b": "calmantes",
+      "tipo": "sinergia",
+      "porque": "Piel hidratada y calmada: base perfecta para piel sensible.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "hidratantes",
+      "b": "regeneradores",
+      "tipo": "sinergia",
+      "porque": "Agua más reparación: el efecto plumpy y glowy.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "peptidos",
+      "b": "hidratantes",
+      "tipo": "sinergia",
+      "porque": "Firmeza más jugosidad.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "peptidos",
+      "b": "peptidos_cobre",
+      "tipo": "sinergia",
+      "porque": "Se complementan en firmeza y reparación.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "peptidos_cobre",
+      "b": "hidratantes",
+      "tipo": "sinergia",
+      "porque": "Reparación con buena hidratación.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "bakuchiol",
+      "b": "hidratantes",
+      "tipo": "sinergia",
+      "porque": "Antiedad suave con piel jugosa.",
+      "como": "Se pueden usar juntos."
+    },
+    {
+      "a": "antioxidantes",
+      "b": "spf",
+      "tipo": "sinergia",
+      "porque": "Los antioxidantes por la mañana refuerzan al protector.",
+      "como": "Antioxidante y, encima, el protector."
+    },
+    {
+      "a": "arbol_te",
+      "b": "retinoides",
+      "tipo": "precaucion",
+      "porque": "Los dos pueden irritar.",
+      "como": "En momentos distintos."
+    },
+    {
+      "a": "arbol_te",
+      "b": "aha",
+      "tipo": "precaucion",
+      "porque": "Suman irritación.",
+      "como": "En momentos distintos."
+    }
+  ]
+}

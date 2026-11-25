@@ -1,0 +1,13 @@
+[
+  {"producto_id": "boj-relief-sun", "alias": "demo", "tipo_piel": "mixta", "puntuacion": 5, "semanas_uso": 20, "reaccion": false, "texto": "[Reseña de ejemplo] No deja blanco ni engrasa; lo uso a diario desde hace meses."},
+  {"producto_id": "boj-relief-sun", "alias": "demo", "tipo_piel": "grasa", "puntuacion": 4, "semanas_uso": 10, "reaccion": false, "texto": "[Reseña de ejemplo] Algo jugoso para mi piel grasa en verano, pero sin granitos."},
+  {"producto_id": "boj-relief-sun", "alias": "demo", "tipo_piel": "sensible", "puntuacion": 4, "semanas_uso": 12, "reaccion": false, "texto": "[Reseña de ejemplo] No me pica en los ojos."},
+  {"producto_id": "anua-heartleaf-77-toner", "alias": "demo", "tipo_piel": "sensible", "puntuacion": 5, "semanas_uso": 9, "reaccion": false, "texto": "[Reseña de ejemplo] Me calma las rojeces después de limpiar."},
+  {"producto_id": "anua-heartleaf-77-toner", "alias": "demo", "tipo_piel": "mixta", "puntuacion": 3, "semanas_uso": 4, "reaccion": false, "texto": "[Reseña de ejemplo] Agradable, pero no noto gran cambio."},
+  {"producto_id": "cosrx-snail-96-essence", "alias": "demo", "tipo_piel": "seca", "puntuacion": 5, "semanas_uso": 16, "reaccion": false, "texto": "[Reseña de ejemplo] Piel mucho más jugosa con el tiempo."},
+  {"producto_id": "boj-glow-serum", "alias": "demo", "tipo_piel": "mixta", "puntuacion": 4, "semanas_uso": 8, "reaccion": false, "texto": "[Reseña de ejemplo] Menos granitos en la frente al segundo mes."},
+  {"producto_id": "to-retinol-05", "alias": "demo", "tipo_piel": "mixta", "puntuacion": 5, "semanas_uso": 16, "reaccion": false, "texto": "[Reseña de ejemplo] Empecé dos noches por semana; a los cuatro meses la textura está mucho mejor."},
+  {"producto_id": "to-retinol-05", "alias": "demo", "tipo_piel": "seca", "puntuacion": 3, "semanas_uso": 6, "reaccion": true, "texto": "[Reseña de ejemplo] Descamación las primeras semanas; con crema antes y después lo tolero."},
+  {"producto_id": "lrp-effaclar-duo-m", "alias": "demo", "tipo_piel": "sensible", "puntuacion": 2, "semanas_uso": 2, "reaccion": true, "texto": "[Reseña de ejemplo] Me dio rojez y picor en las mejillas, lo dejé."},
+  {"producto_id": "moroccanoil-treatment", "alias": "demo", "tipo_piel": "seco", "puntuacion": 5, "semanas_uso": 20, "reaccion": false, "texto": "[Reseña de ejemplo] Brillo inmediato y menos encrespamiento; el olor es fuerte."}
+]
